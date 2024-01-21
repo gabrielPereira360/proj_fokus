@@ -1,19 +1,19 @@
-const html = document.querySelector('html');
-const btn_foco = document.querySelector('.app__card-button--foco');
-const btn_curto = document.querySelector('.app__card-button--curto');
-const btn_longo = document.querySelector('.app__card-button--longo');
-const banner = document.querySelector('.app__image');
-const texto_banner = document.querySelector('.app__title');
-const botoes = document.querySelectorAll('.app__card-button');
-const musica_chbx = document.querySelector('#alternar-musica');
-const musica = new Audio('./sons/luna-rise-part-one.mp3');
-musica.loop = true;
-const btn_temporizador = document.querySelector('#start-pause'); 
-const iniciarOuPausarBtn = document.querySelector('#start-pause span');
-const iniciarOuPausarImg = document.querySelector('.app__card-primary-butto-icon');
-const tempoNaTela = document.querySelector('#timer');
+const html = document.querySelector('html'); // Captura os dados da tag html
+const btn_foco = document.querySelector('.app__card-button--foco'); // Captura os dados da tag botao de foco
+const btn_curto = document.querySelector('.app__card-button--curto'); // Captura os dados da tag botao de foco curto
+const btn_longo = document.querySelector('.app__card-button--longo'); // Captura os dados da tag botao de foco longo
+const banner = document.querySelector('.app__image'); // Captura a tag da foto do banner da página
+const texto_banner = document.querySelector('.app__title'); // Captura a tag do texto do cabecalho da página
+const botoes = document.querySelectorAll('.app__card-button'); // Captura os botoes de forma genérica
+const musica_chbx = document.querySelector('#alternar-musica'); // Obtem os dados da tag checkbox relacionada a música
+const musica = new Audio('./sons/luna-rise-part-one.mp3'); // Instancia uma música com o seu caminho 
+musica.loop = true; // Declaro que música irá sempre repetir e estará sempre tocando
+const btn_temporizador = document.querySelector('#start-pause'); // Captura a tag do botão do temporizador
+const iniciarOuPausarBtn = document.querySelector('#start-pause span'); // Captura o botão de começar
+const iniciarOuPausarImg = document.querySelector('.app__card-primary-butto-icon'); // Captura imagem do botao de pausar
+const tempoNaTela = document.querySelector('#timer'); // Captura a tag onde irá encaixar o tempo
 
-let tempoDecorridoEmSegundos = 1500; // Iniciar com 25 minutos
+let tempoDecorridoEmSegundos = 1500; // Iniciar com 25 minutoss
 let intervaloId = null; 
 const audioPlay = new Audio('./sons/play.wav');
 const audioPause = new Audio('./sons/pause.mp3');
@@ -25,7 +25,7 @@ musica_chbx.addEventListener('change', () => {
     }else{
         musica.pause();
     }
-});
+}); // Evento que verifica se a música esta tocando ou pausada
 
 
 btn_foco.addEventListener('click', () => {
@@ -35,7 +35,7 @@ btn_foco.addEventListener('click', () => {
     zerar();
     resetarComeço();
     mostrarTempo();
-});
+}); // Atribui um evento de clique para alterar o atributo data-contexto da tag html
 
 btn_curto.addEventListener('click', () => {
     alteraContexto('descanso-curto');
@@ -57,7 +57,7 @@ btn_longo.addEventListener('click', () => {
 
 function alteraContexto (contexto){
 
-    botoes.forEach(function (btn){
+    botoes.forEach(function (btn){ // Percorre os botões e limpa os estilos
         btn.classList.remove('active');
     });
  
@@ -118,7 +118,7 @@ function iniciarOuPausar(){
 function zerar(){
     clearInterval(intervaloId);
     intervaloId = null;
-};
+}; // Zerar temporizador
 
 function mostrarTempo (){
     const tempo = new Date(tempoDecorridoEmSegundos * 1000);
