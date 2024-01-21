@@ -3,7 +3,8 @@
 
 <div style="display: flex; gap: 50px">
 - Desktop: 
-<img src="#" alt="Página principal da página Fokus" width="350px">
+<img src="screenshots/127.0.0.1_5500_(Nest Hub Max).png" alt="Página principal da página Fokus parte cima" width="350px">
+<img src="screenshots/127.0.0.1_5500_(Nest Hub Max) (1).png" alt="Página principal da página Fokus parte baixo" width="350px">
 </div>
 
 ## Ferramentas utilizadas:
@@ -18,5 +19,5 @@
 
 ### Gabriel Pereira
 
-### Link da prévia: 
+### Link da prévia: https://gabrielpereira360.github.io/proj_fokus/
 ### Linkedin: https://www.linkedin.com/in/gabriel-martins2003/
