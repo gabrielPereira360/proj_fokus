@@ -13,7 +13,7 @@ const iniciarOuPausarBtn = document.querySelector('#start-pause span'); // Captu
 const iniciarOuPausarImg = document.querySelector('.app__card-primary-butto-icon'); // Captura imagem do botao de pausar
 const tempoNaTela = document.querySelector('#timer'); // Captura a tag onde irá encaixar o tempo
 
-let tempoDecorridoEmSegundos = 1500; // Iniciar com 25 minutoss
+let tempoDecorridoEmSegundos = 15; // Iniciar com 25 minutoss 1500ms
 let intervaloId = null; 
 const audioPlay = new Audio('./sons/play.wav');
 const audioPause = new Audio('./sons/pause.mp3');
@@ -31,7 +31,7 @@ musica_chbx.addEventListener('change', () => {
 btn_foco.addEventListener('click', () => {
     alteraContexto('foco');
     btn_foco.classList.add('active');
-    tempoDecorridoEmSegundos = 1500;
+    tempoDecorridoEmSegundos = 5; //1500
     zerar();
     resetarComeço();
     mostrarTempo();
@@ -92,6 +92,11 @@ const contagemRegressiva = () => {
     if (tempoDecorridoEmSegundos <= 0){
         audioBeep.play();
         alert('Tempo finalizado');
+        const focoAtivo = html.getAttribute('data-contexto') == 'foco';
+        if (focoAtivo) {
+            const evento = new CustomEvent('FocoFinalizado');
+            document.dispatchEvent(evento);
+        }
         zerar();
         resetarComeço();
         return;
@@ -132,3 +137,5 @@ function resetarComeço(){
 }
 
 mostrarTempo();
+
+
