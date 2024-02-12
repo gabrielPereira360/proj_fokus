@@ -13,7 +13,8 @@ const iniciarOuPausarBtn = document.querySelector('#start-pause span');
 const iniciarOuPausarImg = document.querySelector('.app__card-primary-butto-icon');
 const tempoNaTela = document.querySelector('#timer'); 
 
-let tempoDecorridoEmSegundos = 1500; // Iniciar com 25 minutoss
+let tempoDecorridoEmSegundos = 5; // Iniciar com 25 minutoss 1500ms
+let tempoBkp = tempoDecorridoEmSegundos;
 let intervaloId = null; 
 const audioPlay = new Audio('./sons/play.wav');
 const audioPause = new Audio('./sons/pause.mp3');
@@ -31,7 +32,7 @@ musica_chbx.addEventListener('change', () => {
 btn_foco.addEventListener('click', () => {
     alteraContexto('foco');
     btn_foco.classList.add('active');
-    tempoDecorridoEmSegundos = 1500;
+    tempoDecorridoEmSegundos = 5; //1500
     zerar();
     resetarComeço();
     mostrarTempo();
@@ -91,9 +92,21 @@ function alteraContexto (contexto){
 const contagemRegressiva = () => {
     if (tempoDecorridoEmSegundos <= 0){
         audioBeep.play();
-        alert('Tempo finalizado');
+
+        var delayInMilliseconds = 200;
+        setTimeout(function() {
+            alert('Tempo finalizado');
+        }, delayInMilliseconds);
+
+        const focoAtivo = html.getAttribute('data-contexto') == 'foco';
+        if (focoAtivo) {
+            const evento = new CustomEvent('FocoFinalizado');
+            document.dispatchEvent(evento);
+        }
+        tempoDecorridoEmSegundos = tempoBkp
         zerar();
         resetarComeço();
+        mostrarTempo();
         return;
     }
     tempoDecorridoEmSegundos--;
@@ -132,3 +145,5 @@ function resetarComeço(){
 }
 
 mostrarTempo();
+
+
