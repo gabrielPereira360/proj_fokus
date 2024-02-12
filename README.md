@@ -19,5 +19,5 @@
 
 ### Gabriel Pereira
 
-### Link da prévia: https://gabrielpereira360.github.io/proj_fokus/
+### Link da prévia: https://proj-fokus.vercel.app/
 ### Linkedin: https://www.linkedin.com/in/gabriel-martins2003/
