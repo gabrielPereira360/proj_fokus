@@ -13,7 +13,8 @@ const iniciarOuPausarBtn = document.querySelector('#start-pause span'); // Captu
 const iniciarOuPausarImg = document.querySelector('.app__card-primary-butto-icon'); // Captura imagem do botao de pausar
 const tempoNaTela = document.querySelector('#timer'); // Captura a tag onde irá encaixar o tempo
 
-let tempoDecorridoEmSegundos = 15; // Iniciar com 25 minutoss 1500ms
+let tempoDecorridoEmSegundos = 5; // Iniciar com 25 minutoss 1500ms
+let tempoBkp = tempoDecorridoEmSegundos;
 let intervaloId = null; 
 const audioPlay = new Audio('./sons/play.wav');
 const audioPause = new Audio('./sons/pause.mp3');
@@ -91,14 +92,21 @@ function alteraContexto (contexto){
 const contagemRegressiva = () => {
     if (tempoDecorridoEmSegundos <= 0){
         audioBeep.play();
-        alert('Tempo finalizado');
+
+        var delayInMilliseconds = 200;
+        setTimeout(function() {
+            alert('Tempo finalizado');
+        }, delayInMilliseconds);
+
         const focoAtivo = html.getAttribute('data-contexto') == 'foco';
         if (focoAtivo) {
             const evento = new CustomEvent('FocoFinalizado');
             document.dispatchEvent(evento);
         }
+        tempoDecorridoEmSegundos = tempoBkp
         zerar();
         resetarComeço();
+        mostrarTempo();
         return;
     }
     tempoDecorridoEmSegundos--;
