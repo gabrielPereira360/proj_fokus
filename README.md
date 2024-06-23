@@ -1,4 +1,4 @@
-# Olá, bem vindo ao projeto Fokus desenvolvido como forma de aprimorar habilidae de manipulação de elementos no Javascript por meio do modelo DOM (Documents Object Model)
+# Olá, bem vindo ao projeto Fokus desenvolvido como forma de aprimorar habilidades de manipulação de elementos no Javascript por meio do modelo DOM (Documents Object Model)
 ## Prévias
 
 <div style="display: flex; gap: 50px">
